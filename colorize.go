@@ -21,7 +21,6 @@ func init() {
 	if *colorFlag != "" {
 		color = ansi.ColorFunc(*colorFlag)
 	}
-	fmt.Printf("%s", *altFlag)
 }
 
 func main() {
