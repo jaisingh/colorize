@@ -17,6 +17,11 @@ var altFlag = flag.Bool("alt", false, "Alternate every other line")
 var color func(string) string
 
 func init() {
+	flag.Usage = func() {
+		fmt.Printf("Usage: ./colorize -color 'red:green' -alt=false\n")
+		flag.PrintDefaults()
+	}
+
 	flag.Parse()
 	if *colorFlag != "" {
 		color = ansi.ColorFunc(*colorFlag)
