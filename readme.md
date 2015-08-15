@@ -1,11 +1,22 @@
 ## Colorize
 print alternating lines in different colors.
 
-usage:
+### Usage
+
 `colorize -color "foregroundColor+attributes:backgroundColor+attributes" -alt=false`
 
+#### Examples
+
+Format all lines:
+
+`cat file | colorize -color "red:yellow"`
+
+Format alternating lines:
+
+`cat file | colorize -color "reg:yellow" -alt`
+
 ---
-Options:
+### Options
 
 `-alt` : Alternate lines are colored
 
@@ -21,7 +32,7 @@ Options:
 * white
 * 0...255 (256 colors)
 
-Attributes
+### Attributes
 
 *   b = bold foreground
 *   B = Blink foreground
