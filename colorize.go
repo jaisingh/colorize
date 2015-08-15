@@ -9,9 +9,10 @@ import (
 	"github.com/mgutz/ansi"
 )
 
-// Colorize every other line
+// Colorize output
 
 var colorFlag = flag.String("color", "", "foregroundColor+attributes:backgroundColor+attributes")
+var altFlag = flag.Bool("alt", false, "Alternate every other line")
 
 var color func(string) string
 
@@ -20,20 +21,27 @@ func init() {
 	if *colorFlag != "" {
 		color = ansi.ColorFunc(*colorFlag)
 	}
+	fmt.Printf("%s", *altFlag)
 }
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	count := 0
 	for scanner.Scan() {
-		count += 1
-
 		line := scanner.Text()
-		if count%2 == 0 && *colorFlag != "" {
-			fmt.Println(color(line))
-			continue
-		}
 
+		if *colorFlag != "" {
+			if !*altFlag {
+				fmt.Println(color(line))
+				continue
+			}
+
+			count += 1
+			if *altFlag && count%2 == 0 {
+				fmt.Println(color(line))
+				continue
+			}
+		}
 		fmt.Println(line)
 	}
 

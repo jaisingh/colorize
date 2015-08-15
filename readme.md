@@ -2,11 +2,14 @@
 print alternating lines in different colors.
 
 usage:
-`colorize -color "foregroundColor+attributes:backgroundColor+attributes"`
+`colorize -color "foregroundColor+attributes:backgroundColor+attributes" -alt=false`
 
 ---
+Options:
 
-Colors
+`-alt` : Alternate lines are colored
+
+`-color` :
 
 * black
 * red
